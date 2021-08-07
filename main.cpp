@@ -11,9 +11,12 @@ Code, Compile, Run and Debug online from anywhere in world.
 
 int pesquisa_linear(std::vector<int> &vect, int size_vect, int key)
 {
-    if(std::find(vect.begin(), vect.end(), key) != vect.end())
+    for(int i = 0; i < size_vect; i++)
     {
-        return key;
+        if(vect.at(i) == key)
+        {
+            return i;
+        }
     }
 
     return -1;
@@ -24,27 +27,25 @@ int main()
     int key, aux;
     std::vector<int> vect;
 
-    vect.push_back(1);
-    vect.push_back(2);
     vect.push_back(3);
-    vect.push_back(4);
     vect.push_back(5);
-    vect.push_back(6);
     vect.push_back(7);
-    vect.push_back(8);
     vect.push_back(9);
-    vect.push_back(10);
+    vect.push_back(12);
+    vect.push_back(15);
+    vect.push_back(7);
+    vect.push_back(9);
+    vect.push_back(8);
+    vect.push_back(11);
 
     printf("Qual chave deseja buscar?\n");
-    //Existe um problema aqui caso a chave seja igual a -1, já que o conjunto números inteiros contém números negativos
-    //Não existe muito o que fazer neste caso trabalhando dentro da limitação do pedido.
     scanf("%i", &key);
 
     aux = pesquisa_linear(vect, vect.size(), key); //Optei em usar mais memória do que processamento
 
     if(aux != -1)
     {
-        printf("A chave %i foi encontrada.\n", aux);
+        printf("Sua chave esta na posicao %i do vetor\n", aux);
     }
     else
     {
